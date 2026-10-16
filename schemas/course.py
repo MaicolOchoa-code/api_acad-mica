@@ -1,4 +1,11 @@
 from pydantic import BaseModel, Field
+from sqlmodel import SQLModel, Field
+
+
+class CourseUpdate(SQLModel):
+    name: str = Field(min_length=3, max_length=80)
+    credits: int = Field(ge=1, le=6)
+    active: bool
 
 
 # Esquema de entrada: valida el cuerpo JSON antes de ejecutar el endpoint.
